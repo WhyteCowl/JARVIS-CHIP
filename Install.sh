@@ -6,7 +6,6 @@
 echo "Preparing for Installation"
 echo "Installing dependencies from apt..."
 
-fi
 sudo apt-get update
 sudo apt-get install python-pyaudio python3-pyaudio sox git python-pip python-dev build-essential make automake gcc g++ bison byacc -y
 sudo apt-get install libatlas-base-dev -y
@@ -16,13 +15,11 @@ sudo pip install --upgrade pip
 
 echo "Cloning dependencies from github and downloading files..."
 
-fi
 cd ..
 git clone https://github.com/alexylem/jarvis.git
 git clone https://github.com/Kitt-AI/snowboy.git
 wget https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.1.0.tar.bz2
 
-fi
 
 echo "Installing Swig from source"
 #Installing the best version of swig
@@ -49,6 +46,5 @@ sudo make install
 
 cd ..
 
-fi
 tar xvjf rpi-arm-raspbian-8.0-1.1.0.tar.bz2
 rm -rf rpi-arm-raspbian-8.0-1.1.0.tar.bz2
