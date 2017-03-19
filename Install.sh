@@ -8,10 +8,15 @@ echo "Installing dependencies from apt..."
 
 sudo apt-get update
 sudo apt-get install python-pyaudio python3-pyaudio sox git python-pip python-dev build-essential make automake gcc g++ bison byacc -y
+sudo apt-get install autoconf cpp autotools-dev libc6-dev libjack-jackd2-0 jackd2 -y
 sudo apt-get install libatlas-base-dev -y
+
+echo "making sure everything is up to date..."
+sudo apt-get upgrade -y
 
 echo "setting up pip..."
 sudo pip install --upgrade pip
+sudo pip install pyaudio
 
 echo "Cloning dependencies from github and downloading files..."
 
@@ -48,3 +53,23 @@ cd ..
 
 tar xvjf rpi-arm-raspbian-8.0-1.1.0.tar.bz2
 rm -rf rpi-arm-raspbian-8.0-1.1.0.tar.bz2
+rm -rf swig-3.0.7.tar.gz
+cd snowboy
+cd swig/Python
+sudo make
+sudo cp _snowboydetect.so ~/jarvis/stt_engines/snowboy/_snowboydetect.so
+sudo cp snowboydetect.py ~/jarvis/stt_engines/snowboy/snowboydetect.py
+cd ..
+cd ..
+cd examples/Python
+sudo mkdir ~/jarvis/stt_engines/snowboy/resources
+cd resources
+sudo cp common.res ~/jarvis/stt_engines/snowboy/resources/common.res
+cd ..
+cd ..
+cd ..
+cd ..
+cd rpi-arm-raspbian-8.0-1.1.0
+sudo cp snowboydecoder.py ~/jarvis/stt_engines/snowboy/snowboydecoder.py
+cd ..
+rm -rf rpi-arm-raspbian-8.0-1.1.0
