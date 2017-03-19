@@ -73,3 +73,4 @@ cd rpi-arm-raspbian-8.0-1.1.0
 sudo cp snowboydecoder.py ~/jarvis/stt_engines/snowboy/snowboydecoder.py
 cd ..
 rm -rf rpi-arm-raspbian-8.0-1.1.0
+sudo axp209 --no-limit
